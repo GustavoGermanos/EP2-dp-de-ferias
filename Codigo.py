@@ -65,6 +65,17 @@ def valida_questao(questao):
                     d['opcoes'] = d2
                     
     return d
+
+
+    def valida_questoes(lista):
+        l = []
+        for questao in lista:
+            quest = valida_questao(questao)
+            if len(quest) > 0:
+                l.append(quest)
+            else:
+                l.append({})
+        return l
                 
                 
                 
