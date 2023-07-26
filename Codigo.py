@@ -85,5 +85,13 @@ def sorteia_questao(dicionario,nivel):
             dic_aleatorio = random.choice(lista)
 
     return dic_aleatorio
+    
+def sorteia_questao_inedita(dicionario, nivel, lis):
+    sorteada = sorteia_questao (dicionario, nivel)
+    if sorteada in lis:
+        sorteada = sorteia_questao (dicionario, nivel)
+    if sorteada not in lis:
+        lis.append(sorteada)
+    return sorteada
                 
                 
