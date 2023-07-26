@@ -67,15 +67,23 @@ def valida_questao(questao):
     return d
 
 
-    def valida_questoes(lista):
-        l = []
-        for questao in lista:
-            quest = valida_questao(questao)
-            if len(quest) > 0:
-                l.append(quest)
-            else:
-                l.append({})
-        return l
-                
+def valida_questoes(lista):
+    l = []
+    for questao in lista:
+        quest = valida_questao(questao)
+        if len(quest) > 0:
+            l.append(quest)
+        else:
+            l.append({})
+    return l
+
+
+import random
+def sorteia_questao(dicionario,nivel):
+    for dificuldade, lista in dicionario.items():
+        if nivel == dificuldade:
+            dic_aleatorio = random.choice(lista)
+
+    return dic_aleatorio
                 
                 
