@@ -293,23 +293,23 @@ def gera_ajuda(dicionario):
 
 
 
-while True:
-    print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!')
 
-    nome = input('Qual o seu nome?')
+print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!')
 
-    print(f'Ok {nome}, você tem direito a pular 3 vezes e 2 ajudas!\n As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!')
-    print('Aperte ENTER para continuar...')
-    para_continuar = input('Aperte ENTER para continuar')
+nome = input('Qual o seu nome?')
 
-    print( 'O jogo já vai começar! Lá vem a primeira questão! \n Vamos começar com questões do nível FACIL!' )                                  
-    print ('Aperte ENTER para continuar...')   
+print(f'Ok {nome}, você tem direito a pular 3 vezes e 2 ajudas!\n As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!')
+print('Aperte ENTER para continuar...')
+para_continuar = input('Aperte ENTER para continuar')
 
-    para_continuar = input('Aperte ENTER para continuar')
+print( 'O jogo já vai começar! Lá vem a primeira questão! \n Vamos começar com questões do nível FACIL!' )                                  
+print ('Aperte ENTER para continuar...')   
 
-    ja_sorteadas = []
-    nivel ='facil'
-    lista_premios = [1000,
+para_continuar = input('Aperte ENTER para continuar')
+
+ja_sorteadas = []
+nivel ='facil'
+lista_premios = [1000,
 5000,
 10000,
 30000,
@@ -318,12 +318,13 @@ while True:
 300000,
 500000,
 1000000]
-    contador_corretas= 0
-    contador_pular =3
-    contador_ajuda=2
+contador_corretas= 0
+contador_pular =3
+contador_ajuda=2
 
-    i = 1
-    questoes = transforma_base(quest)
+i = 1
+questoes = transforma_base(quest)
+while True:
     questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
     texto_questao = questao_para_texto(questao, i)
     correta = questao['correta']
@@ -334,18 +335,20 @@ while True:
 
     resposta = input('Qual a sua resposta?!')
 
-    
+    maior_premio = 0
     if resposta == correta:
         
         contador_corretas+=1
         i+=1
         print('Sua resposta esta correta')
-        premio = lista_premios[contador_corretas]
-
-        questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
-        texto_questao = questao_para_texto(questao, i)
-
-        resposta = input('Qual a sua resposta?!')
+        for j in range(len(lista_premios)):
+            prem = lista_premios[j]
+            maior_premio = prem
+            del(lista_premios[j])
+            break
+        
+        print(f'Seu premio é {maior_premio}')
+        continue
         
 
     if resposta != correta:
@@ -406,5 +409,5 @@ while True:
 
     #verificando se esta correta a resposta
 
-    
-    
+
+
