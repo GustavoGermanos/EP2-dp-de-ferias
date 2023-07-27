@@ -1,3 +1,12 @@
+'Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!'
+
+while True:
+    nome = input('Qual o seu nome?: ')
+    break
+
+
+
+
 def transforma_base(lista):
     d = {}
     for dicio in lista:
@@ -106,6 +115,9 @@ C: {dicionario['opcoes']['C']}
 D: {dicionario['opcoes']['D']}\n'''
 
     return texto
+
+
+
 
                 
 
