@@ -332,8 +332,12 @@ while True:
 
 
     print(texto_questao)
-
-    resposta = input('Qual a sua resposta?!')
+    while True:
+        resposta = input('Qual a sua resposta?!')
+        if resposta not in ['A', 'B', 'C', 'D', 'ajuda', 'pular', 'sair']:
+            print('Opção inválida!')
+        else:
+            break
 
     maior_premio = 0
     if resposta == correta:
@@ -380,7 +384,7 @@ while True:
                 
         #pulando resposta
 
-        if resposta == 'pular':
+        elif resposta == 'pular':
             while contador_pular > 0:
                 
                 contador_pular-=1
@@ -389,7 +393,7 @@ while True:
                 para_continuar = input('Aperte ENTER para continuar')
 
                 questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
-                texto_questao = questao_para_texto(questao, 1)
+                texto_questao = questao_para_texto(questao, i)
                 print(texto_questao)
 
                 resposta = input('Qual a sua resposta?!')
@@ -404,6 +408,13 @@ while True:
                 print(texto_questao)
 
                 resposta = input('Qual a sua resposta?!')
+
+        elif resposta == 'sair':
+            print(f'O seu patrimônio foi de{maior_premio}')
+            break
+        else:
+            print('Se fudeu! Você perdeu tudo!')
+            break
             
         
 
