@@ -353,7 +353,9 @@ while True:
         
         print(f'Seu premio é {maior_premio}')
         continue
-        
+    if maior_premio == 1000000:
+        print('Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
+        break
 
     if resposta != correta:
         
