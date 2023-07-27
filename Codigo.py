@@ -1,8 +1,3 @@
-
-
-
-
-
 def transforma_base(lista):
     d = {}
     for dicio in lista:
