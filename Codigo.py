@@ -322,10 +322,10 @@ while True:
     contador_pular =3
     contador_ajuda=2
 
-
+    i = 1
     questoes = transforma_base(quest)
     questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
-    texto_questao = questao_para_texto(questao, 1)
+    texto_questao = questao_para_texto(questao, i)
     correta = questao['correta']
 
 
@@ -334,68 +334,77 @@ while True:
 
     resposta = input('Qual a sua resposta?!')
 
-    #pedindo ajuda
+    
+    if resposta == correta:
+        
+        contador_corretas+=1
+        i+=1
+        print('Sua resposta esta correta')
+        premio = lista_premios[contador_corretas]
 
-    if resposta == 'ajuda':
-        while contador_ajuda >0:
-            contador_ajuda -=1
-            print('Ok, ajudando! Você ainda tem {0:.0f} ajuda!'.format(contador_ajuda))                                            
-            print('Aperte ENTER para continuar... ')  
-            para_continuar = input('Aperte ENTER para continuar')
-                                                        
-                                
-            print(gera_ajuda(questao))
-            resposta = input('Qual a sua resposta?!')
+        questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
+        texto_questao = questao_para_texto(questao, i)
+
+        resposta = input('Qual a sua resposta?!')
+        
+
+    if resposta != correta:
+        
+        if resposta == 'ajuda':
+            while contador_ajuda >0:
+                contador_ajuda -=1
+                print('Ok, ajudando! Você ainda tem {0:.0f} ajuda!'.format(contador_ajuda))                                            
+                print('Aperte ENTER para continuar... ')  
+                para_continuar = input('Aperte ENTER para continuar')
+                                                            
+                                    
+                print(gera_ajuda(questao))
+                resposta = input('Qual a sua resposta?!')
 
 
 
 
-            if contador_ajuda == 0:
-            
-                print ('Não deu! Você não tem mais direito a ajuda!')                                    
-                ('Aperte ENTER para continuar... ' )
+                if contador_ajuda == 0:
+                
+                    print ('Não deu! Você não tem mais direito a ajuda!')                                    
+                    ('Aperte ENTER para continuar... ' )
+                    para_continuar = input('Aperte ENTER para continuar')
+
+                    print(texto_questao)
+                    resposta = input('Qual a sua resposta?!')
+                    
+                    break
+                
+        #pulando resposta
+
+        if resposta == 'pular':
+            while contador_pular > 0:
+                
+                contador_pular-=1
+                print('Ok, pulando! Você ainda tem {0:.0f} pulos!'.format(contador_pular))                                            
+                print('Aperte ENTER para continuar... ')  
+                para_continuar = input('Aperte ENTER para continuar')
+
+                questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
+                texto_questao = questao_para_texto(questao, 1)
+                print(texto_questao)
+
+                resposta = input('Qual a sua resposta?!')
+
+                continue
+
+            if contador_pular == 0:
+                print ('Não deu! Você não tem mais direito a pulos!')                                    
+                print ('Aperte ENTER para continuar... ' )
                 para_continuar = input('Aperte ENTER para continuar')
 
                 print(texto_questao)
+
                 resposta = input('Qual a sua resposta?!')
-                
-                break
-            
-    #pulando resposta
-
-    if resposta == 'pular':
-        while contador_pular > 0:
-            
-            contador_pular-=1
-            print('Ok, pulando! Você ainda tem {0:.0f} pulos!'.format(contador_pular))                                            
-            print('Aperte ENTER para continuar... ')  
-            para_continuar = input('Aperte ENTER para continuar')
-
-            questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
-            texto_questao = questao_para_texto(questao, 1)
-            print(texto_questao)
-
-            resposta = input('Qual a sua resposta?!')
-
-            continue
-
-        if contador_pular == 0:
-            print ('Não deu! Você não tem mais direito a pulos!')                                    
-            print ('Aperte ENTER para continuar... ' )
-            para_continuar = input('Aperte ENTER para continuar')
-
-            print(texto_questao)
-
-            resposta = input('Qual a sua resposta?!')
             
         
 
     #verificando se esta correta a resposta
 
-    if resposta != correta:
-        print ('Que pena! Você errou e vai sair sem nada :(')
-        premio = 0
-        break
-    if resposta == correta:
-        premio = lista_premios[contador_corretas]
-        contador_corretas+=1
+    
+    
