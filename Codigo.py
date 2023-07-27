@@ -1,8 +1,4 @@
-'Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!'
 
-while True:
-    nome = input('Qual o seu nome?: ')
-    break
 
 
 
@@ -118,6 +114,23 @@ D: {dicionario['opcoes']['D']}\n'''
 
 
 
+import random
+def gera_ajuda(dicionario):
+    lista=[]
+    correta = dicionario['correta']
+    for letra in dicionario['opcoes']:
+        if letra != correta:
+            lista.append(dicionario['opcoes'][letra])
+
+    num_dicas = random.randint(1,2)
+    if num_dicas == 1:
+        sorteia = random.choice(lista)
+        return f'DICA:\nOpções certamente erradas: {sorteia}'
+    if num_dicas ==2:
+        sorteia1 = random.choice(lista)
+        lista.remove(sorteia1)
+        sorteia2 = random.choice(lista)
+        return f'DICA:\nOpções certamente erradas: {sorteia1}|{sorteia2}'
 
                 
 
