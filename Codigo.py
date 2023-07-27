@@ -85,7 +85,7 @@ def sorteia_questao(dicionario,nivel):
             dic_aleatorio = random.choice(lista)
 
     return dic_aleatorio
-    
+
 def sorteia_questao_inedita(dicionario, nivel, lis):
     sorteada = sorteia_questao (dicionario, nivel)
     if sorteada in lis:
@@ -93,5 +93,19 @@ def sorteia_questao_inedita(dicionario, nivel, lis):
     if sorteada not in lis:
         lis.append(sorteada)
     return sorteada
+
+def questao_para_texto(dicionario,numero):
+    
+    texto=f'''----------------------------------------
+QUESTAO {numero}\n
+{dicionario['titulo']}\n
+RESPOSTAS:
+A: {dicionario['opcoes']['A']}
+B: {dicionario['opcoes']['B']}
+C: {dicionario['opcoes']['C']}
+D: {dicionario['opcoes']['D']}\n'''
+
+    return texto
+
                 
-                
+
