@@ -293,141 +293,141 @@ def gera_ajuda(dicionario):
 
 
 
-
-print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!')
-
-nome = input('Qual o seu nome?')
-
-print(f'Ok {nome}, você tem direito a pular 3 vezes e 2 ajudas!\n As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!')
-print('Aperte ENTER para continuar...')
-para_continuar = input('Aperte ENTER para continuar')
-
-print( 'O jogo já vai começar! Lá vem a primeira questão! \n Vamos começar com questões do nível FACIL!' )                                  
-print ('Aperte ENTER para continuar...')   
-
-para_continuar = input('Aperte ENTER para continuar')
-
-ja_sorteadas = []
-nivel ='facil'
-lista_premios = [1000,
-5000,
-10000,
-30000,
-50000,
-100000,
-300000,
-500000,
-1000000]
-contador_corretas= 0
-contador_pular =3
-contador_ajuda=2
-
-i = 1
-questoes = transforma_base(quest)
 while True:
-    questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
-    texto_questao = questao_para_texto(questao, i)
-    correta = questao['correta']
+    print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!')
 
+    nome = input('Qual o seu nome?')
 
+    print(f'Ok {nome}, você tem direito a pular 3 vezes e 2 ajudas!\n As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!')
+    print('Aperte ENTER para continuar...')
+    para_continuar = input('Aperte ENTER para continuar')
 
-    print(texto_questao)
+    print( 'O jogo já vai começar! Lá vem a primeira questão! \n Vamos começar com questões do nível FACIL!' )                                  
+    print ('Aperte ENTER para continuar...')   
+
+    para_continuar = input('Aperte ENTER para continuar')
+
+    ja_sorteadas = []
+    nivel ='facil'
+    lista_premios = [1000,
+    5000,
+    10000,
+    30000,
+    50000,
+    100000,
+    300000,
+    500000,
+    1000000]
+    contador_corretas= 0
+    contador_pular =3
+    contador_ajuda=2
+
+    i = 1
+    questoes = transforma_base(quest)
     while True:
-        resposta = input('Qual a sua resposta?!')
-        if resposta not in ['A', 'B', 'C', 'D', 'ajuda', 'pular', 'sair']:
-            from colorama import Fore, Back, Style
-            print(Fore.RED + 'Opção inválida')
-            
-        else:
-            break
-
-    maior_premio = 0
-    if resposta == correta:
-        
-        contador_corretas+=1
-        i+=1
-        from colorama import Fore, Back, Style
-        print(Fore.GREEN + 'Sua resposta esta correta')
-        for j in range(len(lista_premios)):
-            prem = lista_premios[j]
-            maior_premio = prem
-            del(lista_premios[j])
-            break
-        
-        print(f'Seu premio é {maior_premio}')
-        continue
-    if maior_premio == 1000000:
-        from colorama import Fore, Back, Style
-        print(Fore.GREEN + 'Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
-        
-        break
-
-    if resposta != correta:
-        
-        if resposta == 'ajuda':
-            while contador_ajuda >0:
-                contador_ajuda -=1
-                print('Ok, ajudando! Você ainda tem {0:.0f} ajuda!'.format(contador_ajuda))                                            
-                print('Aperte ENTER para continuar... ')  
-                para_continuar = input('Aperte ENTER para continuar')
-                                                            
-                                    
-                print(gera_ajuda(questao))
-                resposta = input('Qual a sua resposta?!')
+        questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
+        texto_questao = questao_para_texto(questao, i)
+        correta = questao['correta']
 
 
 
-
-                if contador_ajuda == 0:
+        print(texto_questao)
+        while True:
+            resposta = input('Qual a sua resposta?!')
+            if resposta not in ['A', 'B', 'C', 'D', 'ajuda', 'pular', 'sair']:
+                from colorama import Fore, Back, Style
+                print(Fore.RED + 'Opção inválida')
                 
-                    print ('Não deu! Você não tem mais direito a ajuda!')                                    
-                    ('Aperte ENTER para continuar... ' )
+            else:
+                break
+
+        maior_premio = 0
+        if resposta == correta:
+            
+            contador_corretas+=1
+            i+=1
+            from colorama import Fore, Back, Style
+            print(Fore.GREEN + 'Sua resposta esta correta')
+            for j in range(len(lista_premios)):
+                prem = lista_premios[j]
+                maior_premio = prem
+                del(lista_premios[j])
+                break
+            
+            print(f'Seu premio é {maior_premio}')
+            continue
+        if prem == 1000000:
+            from colorama import Fore, Back, Style
+            print(Fore.GREEN + 'Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
+            
+            break
+
+        if resposta != correta:
+            
+            if resposta == 'ajuda':
+                while contador_ajuda >0:
+                    contador_ajuda -=1
+                    print('Ok, ajudando! Você ainda tem {0:.0f} ajuda!'.format(contador_ajuda))                                            
+                    print('Aperte ENTER para continuar... ')  
+                    para_continuar = input('Aperte ENTER para continuar')
+                                                                
+                                        
+                    print(gera_ajuda(questao))
+                    resposta = input('Qual a sua resposta?!')
+
+
+
+
+                    if contador_ajuda == 0:
+                    
+                        print ('Não deu! Você não tem mais direito a ajuda!')                                    
+                        ('Aperte ENTER para continuar... ' )
+                        para_continuar = input('Aperte ENTER para continuar')
+
+                        print(texto_questao)
+                        resposta = input('Qual a sua resposta?!')
+                        
+                        break
+                    
+            #pulando resposta
+
+            elif resposta == 'pular':
+                while contador_pular > 0:
+                    
+                    contador_pular-=1
+                    print('Ok, pulando! Você ainda tem {0:.0f} pulos!'.format(contador_pular))                                            
+                    print('Aperte ENTER para continuar... ')  
+                    para_continuar = input('Aperte ENTER para continuar')
+
+                    questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
+                    texto_questao = questao_para_texto(questao, i)
+                    print(texto_questao)
+
+                    resposta = input('Qual a sua resposta?!')
+
+                    continue
+
+                if contador_pular == 0:
+                    print ('Não deu! Você não tem mais direito a pulos!')                                    
+                    print ('Aperte ENTER para continuar... ' )
                     para_continuar = input('Aperte ENTER para continuar')
 
                     print(texto_questao)
+
                     resposta = input('Qual a sua resposta?!')
-                    
-                    break
+
+            elif resposta == 'sair':
+                from colorama import Fore, Back, Style
+                print(Fore.YELLOW + f'O seu patrimônio foi de {prem}')
+                break
+            else:
+                from colorama import Fore, Back, Style
+                print(Fore.RED +'Se fudeu! Você perdeu tudo!')
+                break
                 
-        #pulando resposta
-
-        elif resposta == 'pular':
-            while contador_pular > 0:
-                
-                contador_pular-=1
-                print('Ok, pulando! Você ainda tem {0:.0f} pulos!'.format(contador_pular))                                            
-                print('Aperte ENTER para continuar... ')  
-                para_continuar = input('Aperte ENTER para continuar')
-
-                questao = sorteia_questao_inedita(questoes, nivel, ja_sorteadas)
-                texto_questao = questao_para_texto(questao, i)
-                print(texto_questao)
-
-                resposta = input('Qual a sua resposta?!')
-
-                continue
-
-            if contador_pular == 0:
-                print ('Não deu! Você não tem mais direito a pulos!')                                    
-                print ('Aperte ENTER para continuar... ' )
-                para_continuar = input('Aperte ENTER para continuar')
-
-                print(texto_questao)
-
-                resposta = input('Qual a sua resposta?!')
-
-        elif resposta == 'sair':
-            from colorama import Fore, Back, Style
-            print(Fore.YELLOW + f'O seu patrimônio foi de {maior_premio}')
-            break
-        else:
-            from colorama import Fore, Back, Style
-            print(Fore.RED +'Se fudeu! Você perdeu tudo!')
-            break
             
-        
 
-    #verificando se esta correta a resposta
+        #verificando se esta correta a resposta
 
 
 
