@@ -13,7 +13,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'opcoes': {'A': '21 de Abril', 'B': '12 de Outubro', 'C': '07 de Setembro', 'D': '15 de Novembro'},
           'correta': 'C'},
 
-         {'titulo': '_________ é um conjunto de particularidades que caracterizam um grupo de pessoas, uma família ou uma sociedade. É formada por princípios morais, hábitos, costumes, histórias, manifestações religiosas, entre outros. Qual palavra melhor completa o início da frase?',
+         {'titulo': '___ é um conjunto de particularidades que caracterizam um grupo de pessoas, uma família ou uma sociedade. É formada por princípios morais, hábitos, costumes, histórias, manifestações religiosas, entre outros. Qual palavra melhor completa o início da frase?',
           'nivel': 'facil',
           'opcoes': {'A': 'Missão', 'B': 'Cultura', 'C': 'Curso superior', 'D': 'Culinária'},
           'correta': 'B'},
@@ -88,7 +88,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'opcoes': {'A': '259', 'B': '85', 'C': '49', 'D': '19'},
           'correta': 'D'},
 
-         {'titulo': 'Na Conjectura de _______, escolhendo-se um número natural inicial n, onde n > 0, os seguintes critérios serão obedecidos: Se n for par o seu sucessor será a metade e se n for ímpar o seu sucessor será o triplo mais um, gerando então um novo número. Qual o nome da conjectura?',
+         {'titulo': 'Na Conjectura de ___, escolhendo-se um número natural inicial n, onde n > 0, os seguintes critérios serão obedecidos: Se n for par o seu sucessor será a metade e se n for ímpar o seu sucessor será o triplo mais um, gerando então um novo número. Qual o nome da conjectura?',
           'nivel': 'medio',
           'opcoes': {'A': 'Collatz', 'B': 'Goldbach', 'C': 'Poincaré', 'D': 'Hodge'},
           'correta': 'A'},
@@ -352,15 +352,17 @@ while True:
                 prem = lista_premios[j]
                 maior_premio = prem
                 del(lista_premios[j])
+                
+                if maior_premio == 1000000:
+                    from colorama import Fore, Back, Style
+                    print(Fore.GREEN + 'Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
+                    break
                 break
+            
             
             print(f'Seu premio é {maior_premio}')
             continue
-        if prem == 1000000:
-            from colorama import Fore, Back, Style
-            print(Fore.GREEN + 'Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
-            
-            break
+
 
         if resposta != correta:
             
@@ -428,6 +430,3 @@ while True:
             
 
         #verificando se esta correta a resposta
-
-
-
