@@ -298,7 +298,7 @@ while True:
 
     nome = input('Qual o seu nome?')
 
-    print(f'Ok {nome}, você tem direito a pular 3 vezes e 2 ajudas!\n As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!')
+    print(f'Ok {nome}, você tem direito a pular 3 vezes e 2 ajudas!\n As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "sair"!')
     print('Aperte ENTER para continuar...')
     para_continuar = input('Aperte ENTER para continuar')
 
@@ -352,7 +352,7 @@ while True:
                 prem = lista_premios[j]
                 maior_premio = prem
                 del(lista_premios[j])
-                
+
                 if maior_premio == 1000000:
                     from colorama import Fore, Back, Style
                     print(Fore.GREEN + 'Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
