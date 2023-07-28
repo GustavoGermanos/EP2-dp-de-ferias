@@ -335,7 +335,9 @@ while True:
     while True:
         resposta = input('Qual a sua resposta?!')
         if resposta not in ['A', 'B', 'C', 'D', 'ajuda', 'pular', 'sair']:
-            print('Opção inválida!')
+            from colorama import Fore, Back, Style
+            print(Fore.RED + 'Opção inválida')
+            
         else:
             break
 
@@ -344,7 +346,8 @@ while True:
         
         contador_corretas+=1
         i+=1
-        print('Sua resposta esta correta')
+        from colorama import Fore, Back, Style
+        print(Fore.GREEN + 'Sua resposta esta correta')
         for j in range(len(lista_premios)):
             prem = lista_premios[j]
             maior_premio = prem
@@ -354,7 +357,9 @@ while True:
         print(f'Seu premio é {maior_premio}')
         continue
     if maior_premio == 1000000:
-        print('Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
+        from colorama import Fore, Back, Style
+        print(Fore.GREEN + 'Você ganhou o prêmio máximo de 1 milhão de reais! Você é fera!')
+        
         break
 
     if resposta != correta:
@@ -412,10 +417,12 @@ while True:
                 resposta = input('Qual a sua resposta?!')
 
         elif resposta == 'sair':
-            print(f'O seu patrimônio foi de{maior_premio}')
+            from colorama import Fore, Back, Style
+            print(Fore.YELLOW + f'O seu patrimônio foi de {maior_premio}')
             break
         else:
-            print('Se fudeu! Você perdeu tudo!')
+            from colorama import Fore, Back, Style
+            print(Fore.RED +'Se fudeu! Você perdeu tudo!')
             break
             
         
